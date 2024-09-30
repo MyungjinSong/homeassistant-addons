@@ -8,7 +8,7 @@ arch:
   - aarch64
   - amd64
   - i386
-image: YOGYUI/ha-addon-{arch}-homenet-hillstate
+image: yogyui/ha-addon-{arch}-homenet-hillstate
 init: false
 startup: application
 url: https://github.com/MyungjinSong/homeassistant-addons/tree/main/homenet-hillstate
