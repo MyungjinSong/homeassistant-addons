@@ -1,5 +1,5 @@
 name: HomeNetwork for Hillstate(Lynn)
-version: "1.1.3"
+version: "1.1.4"
 slug: yogyui_homenet_hillstate
 description: RS-485 based HomeNetwork for Lynn (Hyundai HT)
 arch:
