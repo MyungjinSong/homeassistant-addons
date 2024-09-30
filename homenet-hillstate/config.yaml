@@ -8,7 +8,7 @@ arch:
   - aarch64
   - amd64
   - i386
-image: yogyui/ha-addon-{arch}-homenet-hillstate
+image: bysubway/ha-addon-{arch}-homenet-hillstate
 init: false
 startup: application
 url: https://github.com/MyungjinSong/homeassistant-addons/tree/main/homenet-hillstate
@@ -22,7 +22,7 @@ uart: true
 usb: true
 gpio: true
 panel_icon: mdi:home-automation
-panel_title: YOGYUI-HILLSTATE
+panel_title: YOGYUI-HILLSTATE for lynn
 panel_admin: false
 map:
   - addon_config:rw
