@@ -9,12 +9,12 @@ arch:
   - amd64
   - i386
 # image: bysubway/ha-addon-{arch}-homenet-hillstate
-build_from:
-  armhf: "alpine:3.12"
-  armv7: "alpine:3.12"
-  aarch64: "alpine:3.12"
-  amd64: "alpine:3.12"
-  i386: "alpine:3.12"
+# build_from:
+#   armhf: "alpine:3.12"
+#   armv7: "alpine:3.12"
+#   aarch64: "alpine:3.12"
+#   amd64: "alpine:3.12"
+#   i386: "alpine:3.12"
 init: false
 startup: application
 url: https://github.com/MyungjinSong/homeassistant-addons/tree/main/homenet-hillstate
