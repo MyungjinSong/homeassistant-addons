@@ -1,0 +1,192 @@
+name: HomeNetwork for Hillstate(Lynn)
+version: "1.1.3"
+slug: yogyui_homenet_hillstate
+description: RS-485 based HomeNetwork for Lynn (Hyundai HT)
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+image: yogyui/ha-addon-{arch}-homenet-hillstate
+init: false
+startup: application
+url: https://github.com/MyungjinSong/homeassistant-addons/tree/main/homenet-hillstate
+ingress: true
+ingress_port: 7929
+ingress_entry: /
+ingress_stream: false
+full_access: false
+apparmor: true
+uart: true
+usb: true
+gpio: true
+panel_icon: mdi:home-automation
+panel_title: YOGYUI-HILLSTATE
+panel_admin: false
+map:
+  - addon_config:rw
+  - share:rw
+  - backup:rw
+options:
+  app_config_file_path: /config/app_config.xml
+  mqtt_broker:
+    host: core-mosquitto
+    port: 1883
+    username: username
+    password: password
+    client_id: yogyui_hyundai_ht
+    tls_enable: false
+    tls_ca_certs: /config/ssl/cacert.pem
+    tls_certfile: /config/ssl/fullchain.pem
+    tls_keyfile: /config/ssl/privkey.pem
+  rs485:
+    - name: ew11-LO-R16
+      index: 0
+      enable: true
+      hwtype: 1
+      packettype: 0
+      serial: /dev/ttyUSB0
+      baudrate: 9600
+      databit: 8
+      parity: N
+      stopbits: 1
+      socketaddr: 192.168.219.131
+      socketport: 8899
+      check_connection: true
+    - name: ew11-EBS
+      index: 1
+      enable: true
+      hwtype: 1
+      packettype: 0
+      serial: /dev/ttyUSB0
+      baudrate: 9600
+      databit: 8
+      parity: N
+      stopbits: 1
+      socketaddr: 192.168.219.132
+      socketport: 8899
+      check_connection: true
+    - name: ee11-LOTV-R25
+      index: 2
+      enable: true
+      hwtype: 1
+      packettype: 0
+      serial: /dev/ttyUSB0
+      baudrate: 9600
+      databit: 8
+      parity: N
+      stopbits: 1
+      socketaddr: 192.168.219.133
+      socketport: 8899
+      check_connection: true
+  discovery:
+    activate: true
+    prefix: homeassistant
+    timeout: 60
+  parser_mapping:
+    light: 0
+    outlet: 2
+    gasvalve: 1
+    thermostat: 2
+    ventilator: 2
+    airconditioner: 0
+    elevator: 1
+    subphone: 1
+    batchoffsw: 1
+    hems: 0
+    emotionlight: 0
+    dimminglight: 0
+  periodic_query_state:
+    enable: false
+    period: 1000
+    verbose: false
+  subphone:
+    enable: true
+    enable_video_streaming: false
+    conf_file_path: /etc/ffserver.conf
+    feed_path: http://0.0.0.0:8090/feed.ffm
+    input_device: /dev/video0
+    frame_rate: 30
+    width: 640
+    height: 480
+  etc: 
+    thermo_len_per_dev: 3
+    thermostat_range_min: 18
+    thermostat_range_max: 35
+    airconditioner_range_min: 18
+    airconditioner_range_max: 35
+    elevator_packet_call_type: 0
+    elevator_check_command_method: 0
+    dimminglight_max_brightness_level: 7
+    dimminglight_convert_method: 0
+    clear_all_devices: false
+schema:
+  app_config_file_path: str
+  mqtt_broker:
+    host: str
+    port: int
+    username: str
+    password: str
+    client_id: str
+    tls_enable: bool
+    tls_ca_certs: str
+    tls_certfile: str
+    tls_keyfile: str
+  rs485:
+    - name: str
+      index: int(0,)
+      enable: bool
+      hwtype: int(0,1)
+      packettype: int(0,1)
+      serial: str
+      baudrate: int
+      databit: int(5,8)
+      parity: str
+      stopbits: float
+      socketaddr: str
+      socketport: int
+      check_connection: bool
+      cmd_interval_ms: int(1,)?
+      cmd_retry_count: int(1,)?
+  discovery:
+    activate: bool
+    prefix: str
+    timeout: int(1,)
+  parser_mapping:
+    light: int(0,)
+    outlet: int(0,)
+    gasvalve: int(0,)
+    thermostat: int(0,)
+    ventilator: int(0,)
+    airconditioner: int(0,)
+    elevator: int(0,)
+    subphone: int(0,)
+    batchoffsw: int(0,)
+    hems: int(0,)
+    emotionlight: int(0,)
+    dimminglight: int(0,)
+  periodic_query_state:
+    enable: bool
+    period: int
+    verbose: bool
+  subphone:
+    enable: bool
+    enable_video_streaming: bool
+    conf_file_path: str
+    feed_path: str
+    input_device: str
+    frame_rate: int
+    width: int
+    height: int
+  etc:
+    thermo_len_per_dev: int(1,)
+    thermostat_range_min: int
+    thermostat_range_max: int
+    airconditioner_range_min: int
+    airconditioner_range_max: int
+    elevator_packet_call_type: int(0,1)
+    elevator_check_command_method: int(0,1)
+    dimminglight_max_brightness_level: int(1,255)
+    dimminglight_convert_method: int(0,2)
+    clear_all_devices: bool
