@@ -4,8 +4,8 @@ repo_path=/repos/myungjinsong/HomeNetwork
 echo "try to update repository for lynn"
 git pull
 
-echo "Cloned files in ${repo_path}:"
-ls -R ${repo_path} || echo "Failed to list files."
+#echo "Cloned files in ${repo_path}:"
+#ls -R ${repo_path} || echo "Failed to list files."
 
 # read `options` from config
 CONFIG_FILE_PATH="$(bashio::config 'app_config_file_path')"
@@ -18,23 +18,23 @@ CONFIG_PERIODIC_QUERY_STATE="$(bashio::config 'periodic_query_state')"
 CONFIG_SUBPHONE="$(bashio::config 'subphone')"
 CONFIG_ETC="$(bashio::config 'etc')"
 
- source ${repo_path}/Hillstate-Gwanggyosan/activate.sh
- python3 ${repo_path}/Hillstate-Gwanggyosan/app.py \
-  --config_file_path=$CONFIG_FILE_PATH \
-  --mqtt_broker=$CONFIG_MQTT_BROKER \
-  --rs485=$CONFIG_RS485 \
-  --discovery=$CONFIG_DISCOVERY \
-  --parser_mapping=$CONFIG_PARSER_MAPPING \
-  --periodic_query_state=$CONFIG_PERIODIC_QUERY_STATE \
-  --subphone=$CONFIG_SUBPHONE \
-  --etc=$CONFIG_ETC
-
-# uwsgi --ini ${repo_path}/Hillstate-Gwanggyosan/uwsgi.ini \
-#  --pyargv "--config_file_path=$CONFIG_FILE_PATH \
+# source ${repo_path}/Hillstate-Gwanggyosan/activate.sh
+# python3 ${repo_path}/Hillstate-Gwanggyosan/app.py \
+#  --config_file_path=$CONFIG_FILE_PATH \
 #  --mqtt_broker=$CONFIG_MQTT_BROKER \
 #  --rs485=$CONFIG_RS485 \
 #  --discovery=$CONFIG_DISCOVERY \
 #  --parser_mapping=$CONFIG_PARSER_MAPPING \
 #  --periodic_query_state=$CONFIG_PERIODIC_QUERY_STATE \
 #  --subphone=$CONFIG_SUBPHONE \
-#  --etc=$CONFIG_ETC"
+#  --etc=$CONFIG_ETC
+
+ uwsgi --ini ${repo_path}/Hillstate-Gwanggyosan/uwsgi.ini \
+  --pyargv "--config_file_path=$CONFIG_FILE_PATH \
+  --mqtt_broker=$CONFIG_MQTT_BROKER \
+  --rs485=$CONFIG_RS485 \
+  --discovery=$CONFIG_DISCOVERY \
+  --parser_mapping=$CONFIG_PARSER_MAPPING \
+  --periodic_query_state=$CONFIG_PERIODIC_QUERY_STATE \
+  --subphone=$CONFIG_SUBPHONE \
+  --etc=$CONFIG_ETC"
