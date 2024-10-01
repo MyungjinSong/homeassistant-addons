@@ -4,7 +4,8 @@ repo_path=/repos/myungjinsong/HomeNetwork
 echo "try to update repository for lynn"
 git pull
 
-echo "uwsgi.ini path: ${repo_path}/Hillstate-Gwanggyosan/uwsgi.ini"
+echo "Cloned files in ${repo_path}:"
+ls -R ${repo_path} || echo "Failed to list files."
 
 # read `options` from config
 CONFIG_FILE_PATH="$(bashio::config 'app_config_file_path')"
