@@ -4,6 +4,8 @@ repo_path=/repos/myungjinsong/HomeNetwork
 echo "try to update repository for lynn"
 git pull
 
+echo "uwsgi.ini path: ${repo_path}/Hillstate-Gwanggyosan/uwsgi.ini"
+
 # read `options` from config
 CONFIG_FILE_PATH="$(bashio::config 'app_config_file_path')"
 CONFIG_MQTT_BROKER="$(bashio::config 'mqtt_broker')"
