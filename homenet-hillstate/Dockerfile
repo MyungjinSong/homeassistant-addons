@@ -12,9 +12,6 @@ RUN apk add --update --no-cache \
 # clone repository from GitHub
 RUN mkdir -p /repos/MyungjinSong
 RUN git clone https://github.com/MyungjinSong/HomeNetwork.git /repos/MyungjinSong/HomeNetwork
-    && echo "Cloned files:" \
-    && ls -R /repos/MyungjinSong/HomeNetwork
-    
 WORKDIR /repos/MyungjinSong/HomeNetwork/Hillstate-Gwanggyosan
 # RUN git config pull.rebase true
 
