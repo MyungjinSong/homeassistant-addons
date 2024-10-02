@@ -1,5 +1,5 @@
 name: HomeNetwork for Hillstate(Lynn)
-version: "1.1.4"
+version: "1.1.5"
 slug: myungjin_homenet_hillstate
 description: RS-485 based HomeNetwork for Lynn (Hyundai HT)
 arch:
