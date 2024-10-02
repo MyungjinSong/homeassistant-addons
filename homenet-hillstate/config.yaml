@@ -8,7 +8,7 @@ arch:
   - aarch64
   - amd64
   - i386
-# image: bysubway/ha-addon-{arch}-homenet-hillstate
+image: bysubway/ha-addon-{arch}-homenet-hillstate
 # build_from:
 #   armhf: "alpine:3.12"
 #   armv7: "alpine:3.12"
