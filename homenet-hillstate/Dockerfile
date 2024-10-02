@@ -13,7 +13,7 @@ RUN apk add --update --no-cache \
 RUN mkdir -p /repos/MyungjinSong
 RUN git clone https://github.com/MyungjinSong/HomeNetwork.git /repos/MyungjinSong/HomeNetwork
 WORKDIR /repos/MyungjinSong/HomeNetwork/Hillstate-Gwanggyosan
-RUN git config pull.rebase true
+# RUN git config pull.rebase true
 
 # create & activate python virtual environment, install python requirements
 RUN /bin/bash -c "source ./bootstrap.sh"
